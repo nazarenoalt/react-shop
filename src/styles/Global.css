@@ -1,0 +1,10 @@
+* {
+  --base-color: #ff0000;
+  --color: rgba(#000000, 0.88);
+}
+
+body {
+  background-color: var(--base-color);
+  color: var(--color);
+  font-family: sans-serif;
+}
