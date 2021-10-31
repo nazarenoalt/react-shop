@@ -7,10 +7,19 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     filename: 'bundle.js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      "@components": path.resolve(__dirname, './src/components'),
+      "@containers": path.resolve(__dirname, './src/containers'),
+      "@pages": path.resolve(__dirname, './src/pages'),
+      "@styles": path.resolve(__dirname, './src/styles'),
+      "@icons": path.resolve(__dirname, './public/assets/icons'),
+      "@logos": path.resolve(__dirname, './public/assets/logos'),
+    }
   },
   module: {
     rules: [
@@ -37,7 +46,15 @@ module.exports = {
             'style-loader',
             'css-loader',
         ]
-      }
+      },
+      {
+       test: /\.(png|jp(e*)g|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ]
   },
   plugins: [
@@ -50,6 +67,7 @@ module.exports = {
     })
   ],
   devServer: {
+    historyApiFallback: true,
     allowedHosts: path.join(__dirname, 'dist'),
     compress: true,
     port: 3010,

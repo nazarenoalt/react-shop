@@ -1,0 +1,19 @@
+.menu {
+  display: none;
+}
+
+.BurgerMenu__container {
+  display: none;
+  margin-left: 0;
+  margin-right: 0;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .BurgerMenu__container {
+    display: block;
+  }
+  
+  .menu {
+    display: block;
+  }
+}
